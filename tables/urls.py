@@ -6,6 +6,7 @@ app_name = 'tables'
 urlpatterns = [
     #return to homepage
     url(r'^info/', views.to_homepage, name='homepage'),
+    url(r'^departments/', views.to_homepage, name='homepage'),
 
 #=================================================================================
 #TABLES
@@ -22,4 +23,10 @@ urlpatterns = [
     url(r'^tables/workers', views.details_workers, name='details_workers'),
     url(r'^worker_create/$', views.WorkerCreate.as_view(), name='create_worker'),
     url(r'^worker_delete/(?P<pk>\d+)$', views.worker_delete, name='delete_worker'),
+
+#=================================================================================
+#DEPARTMENTS
+#=================================================================================
+    url(r'^departments$', views.departments, name='departments'),
+
 ]
