@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    {% load staticfiles %}
+    <style>
+    body,h1 {font-family: "Raleway", "Verdana", sans-serif}
+    body, html {height: 100%}
+    .bgimg {
+        background-image: url('../../static/taxistation/bg.png');
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+    </style>
+</head>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-middle">
+    <h1 class="w3-jumbo w3-animate-top">ИНФОРМАЦИОННАЯ СИСТЕМА ТАКСОПАРКА</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%"> <br/>
+      <a href="{% url 'tables:index' %}" class="w3-btn w3-xlarge">Таблицы</a>
+      <a href="#" class="w3-btn w3-xlarge w3-text-shadow">Разделы</a>
+      <a href="#" class="w3-btn w3-xlarge w3-text-shadow">Контакты</a>
+  </div>
+    <footer class="w3-container">
+        <div class="w3-display-bottomleft w3-padding-large">
+        <p>Все права защищены &copy; Олеся Кисса, 2016 г.</p>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
+

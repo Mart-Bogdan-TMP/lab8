@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <title>Должности</title>
+       <style>
+
+        </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="w3-responsive">
+        <table class="table table-bordered">
+            <caption>Таблица "Должности"</caption>
+            <thead class="w3-light-grey">
+            <tr><th>Код должности</th>
+            <th>Название</th>
+            <th>Зарплата</th>
+            <th>Обязанности</th>
+            <th>Требования</th> </tr>
+            </thead>
+                <tbody>
+                {% for detail in post_detail %}
+                    <tr>
+                        <td>{{ detail.id }}</td>
+                        <td>{{ detail.post_name }}</td>
+                        <td>{{ detail.salary }}</td>
+                        <td>{{ detail.duties }}</td>
+                        <td>{{ detail.requirements }}</td>
+                        <td><a href="{% url 'tables:delete_post' detail.id %}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+    </table></div>
+    </div>
+
+    <br/>
+
+    <div class="container">
+        <a href="{% url 'tables:create_post' %}" style="font-size: 18px;"><span class="glyphicon glyphicon-plus" aria-hidden="true">Добавить должность</span></a>
+        <br/><br/>
+    </div>
+
+    <div class="container">
+            <a href="{% url 'tables:index' %}" class="w3-btn w3-large w3-hover-blue">К таблицам</a>
+    </div>
+    <br/>
+</body>
+</html>
