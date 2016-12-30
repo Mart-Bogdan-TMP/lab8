@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse, render_to_response, HttpResponseRedirect
+from django.shortcuts import HttpResponse, render_to_response
 from django.template import loader, RequestContext
 from django.views.generic import CreateView
 from .models import Post, Worker
@@ -60,3 +60,18 @@ def worker_delete(request, pk):
     worker_data = {'worker_detail': all_workers}
     print(worker_data)
     return render_to_response('tables/workers.html', worker_data,  RequestContext(request))
+
+
+
+
+
+
+
+
+
+#=================================================================================
+#DEPARTMENTS
+#=================================================================================
+def departments(request):
+    template = loader.get_template('tables/departments.html')
+    return HttpResponse(template.render())
