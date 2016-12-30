@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <title>Сотрудники</title>
 </head>
+
 <body>
-$END$
+    <div class="container">
+        <div class="w3-responsive">
+        <table class="table table-bordered">
+            <caption>Таблица "Сотрудники"</caption>
+            <thead class="w3-light-grey">
+                <tr>
+                <th>ФИО</th>
+                <th>Возраст</th>
+                <th>Пол</th>
+                <th>Адрес</th>
+                <th>Телефон</th>
+                <th>Пасспортные данные</th>
+                <th>Код должности</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for detail in worker_detail %}
+                    <tr>
+                        <td>{{ detail.full_name }}</td>
+                        <td>{{ detail.age }}</td>
+                        <td>{{ detail.gender }}</td>
+                        <td>{{ detail.address }}</td>
+                        <td>{{ detail.phone }}</td>
+                        <td>{{ detail.passport }}</td>
+                        <td>{{ detail.post_id }}</td>
+                        <td><a href="{% url 'tables:delete_worker' detail.worker_id %}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="container">
+        <a href="{% url 'tables:create_worker' %}" style="font-size: 18px;"><span class="glyphicon glyphicon-plus" aria-hidden="true">Добавить сотрудника</span></a>
+        <br/><br/>
+    </div>
+
+    <div class="container">
+            <a href="{% url 'tables:index' %}" class="w3-btn w3-large w3-hover-blue">К таблицам</a>
+    </div>
+    <br/>
 </body>
+
 </html>
