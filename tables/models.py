@@ -12,6 +12,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('tables:create_post')
 
+    def __str__(self):
+        return str(self.id)
+
 
 class Worker(models.Model):
     worker_id = models.AutoField(primary_key=True, db_column='w_id')
@@ -22,3 +25,9 @@ class Worker(models.Model):
     phone = models.CharField(max_length=20, db_column='w_phone')
     passport = models.CharField(max_length=10, db_column='passport')
     post_id = models.ForeignKey(Post, on_delete=models.PROTECT, db_column='post_id')
+
+    def get_absolute_url(self):
+        return reverse('tables:create_worker')
+
+    def __str__(self):
+        return self.full_name
