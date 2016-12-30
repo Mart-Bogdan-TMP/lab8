@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponse, render_to_response, HttpResponseRedirect
 from django.template import loader, RequestContext
 from django.views.generic import CreateView
-from .models import Post
+from .models import Post, Worker
 
 
 def index(request):
@@ -14,8 +14,9 @@ def to_homepage(request):
     return HttpResponse(template.render())
 
 
+#=================================================================================
 #TABLE POSTS
-
+#=================================================================================
 def details_posts(request):
     all_posts = Post.objects.all()
     post_data = {'post_detail': all_posts}
@@ -36,3 +37,26 @@ def post_delete(request, pk):
     print(post_data)
     return render_to_response('tables/posts.html', post_data,  RequestContext(request))
 
+
+#=================================================================================
+#TABLE WORKERS
+#=================================================================================
+def details_workers(request):
+    all_workers = Worker.objects.all()
+    worker_data = {'worker_detail': all_workers}
+    print(worker_data)
+    return render_to_response('tables/workers.html', worker_data, RequestContext(request))
+
+
+class WorkerCreate(CreateView):
+    model = Worker
+    fields = ['full_name', 'age', 'gender', 'address', 'phone', 'passport', 'post_id']
+
+
+def worker_delete(request, pk):
+    query = Worker.objects.get(pk=pk)
+    query.delete()
+    all_workers = Worker.objects.all()
+    worker_data = {'worker_detail': all_workers}
+    print(worker_data)
+    return render_to_response('tables/workers.html', worker_data,  RequestContext(request))
