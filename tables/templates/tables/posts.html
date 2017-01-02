@@ -7,6 +7,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% load staticfiles %}
+    <script type="text/javascript" src="{% static "jquery.tablesorter.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "ts-blue/style.css" %}">
     <title>Должности</title>
        <style>
 
@@ -16,14 +18,14 @@
 <body>
     <div class="container">
         <div class="w3-responsive">
-        <table class="table table-bordered">
+        <table class="table table-bordered tablesorter" id="myTable">
             <caption>Таблица "Должности"</caption>
             <thead class="w3-light-grey">
-            <tr><th>Код должности</th>
-            <th>Название</th>
-            <th>Зарплата</th>
-            <th>Обязанности</th>
-            <th>Требования</th> </tr>
+                <tr><th>Код должности</th>
+                <th>Название</th>
+                <th>Зарплата</th>
+                <th>Обязанности</th>
+                <th>Требования</th> </tr>
             </thead>
                 <tbody>
                 {% for detail in post_detail %}
@@ -51,5 +53,12 @@
             <a href="{% url 'tables:index' %}" class="w3-btn w3-large w3-hover-blue">К таблицам</a>
     </div>
     <br/>
+    <script type="text/javascript">
+        $(document).ready(function() 
+            { 
+                $("#myTable").tablesorter( {sortList: [[0,0], [1,0]]} ); 
+            } 
+        ); 
+    </script>
 </body>
 </html>
